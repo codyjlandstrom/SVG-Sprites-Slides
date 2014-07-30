@@ -2,7 +2,7 @@ var SLIDE_CONFIG = {
   // Slide settings
   settings: {
     title: 'SVG Sprites',
-    subtitle: 'Subtitle Goes Here',
+    subtitle: 'Basic Usage and More',
     //eventInfo: {
     //  title: 'Google I/O',
     //  date: '6/x/2013'
