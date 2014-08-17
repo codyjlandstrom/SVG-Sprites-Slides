@@ -1,8 +1,8 @@
 var SLIDE_CONFIG = {
   // Slide settings
   settings: {
-    title: 'Title Goes Here<br>Up To Two Lines',
-    subtitle: 'Subtitle Goes Here',
+    title: 'SVG Sprites',
+    subtitle: 'Basic Usage and More',
     //eventInfo: {
     //  title: 'Google I/O',
     //  date: '6/x/2013'
@@ -22,12 +22,12 @@ var SLIDE_CONFIG = {
 
   // Author information
   presenters: [{
-    name: 'Firstname Lastname',
-    company: 'Job Title<br>Google',
-    gplus: 'http://plus.google.com/1234567890',
-    twitter: '@yourhandle',
-    www: 'http://www.you.com',
-    github: 'http://github.com/you'
+    name: 'Cody J Landstrom',
+    company: 'DBOX',
+    gplus: 'https://plus.google.com/u/0/+CodyJLandstrom/',
+    twitter: '@codyjlandstrom',
+    www: 'http://landstrom.co',
+    github: 'http://github.com/codyjlandstrom'
   }/*, {
     name: 'Second Name',
     company: 'Job Title, Google',
