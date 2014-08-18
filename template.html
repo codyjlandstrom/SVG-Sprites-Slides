@@ -85,10 +85,38 @@ URL: https://code.google.com/p/io-2012-slides
 
   <slide>
     <hgroup>
-      <h2>Code Slide (Smaller Font)</h2>
+      <h2>Creating an SVG Sprite</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>Copying and Pasting from individual SVG files</li>
+      </ul>
+      <br>
+      <ul>
+        <li>Using Grunt / Gulp Task</li>
+        <ul>
+         <li><a href="https://github.com/FWeinb/grunt-svgstore" target="_blank">grunt-svgstore</a></li>
+         <li><a href="https://github.com/filamentgroup/grunticon" target="_blank">grunticon</a> - for creating png fallbacks</li>
+        </ul>
+      </ul>
+      <br>
+      <ul>
+        <li>Using a Service</li>
+        <ul>
+          <li><a href="http://fontastic.me/" target="_blank">Fontastic</a></li>
+          <li><a href="https://icomoon.io" target="_blank">IcoMoon</a></li>
+          <li><a href="http://fontello.com/" target="_blank">Fontello</a></li>
+        </ul>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Using an SVG Sprite</h2>
     </hgroup>
     <article class="smaller">
-      <pre class="prettyprint" data-lang="svg">
+      <!-- <pre class="prettyprint" data-lang="svg">
 // Say hello world until the user starts questioning
 // the meaningfulness of their existence.
 function helloWorld(world) {
@@ -102,15 +130,29 @@ function helloWorld(world) {
   p { color: pink }
   b { color: blue }
 &lt;/style&gt;
-</pre>
+</pre> -->
 <pre class="prettyprint" data-lang="html">
 &lt;!DOCTYPE html>
 &lt;html>
-&lt;head>
-  &lt;title>My Awesome Page&lt;/title>
-&lt;/head>
+&lt;head>&lt;title>My Awesome Page&lt;/title>&lt;/head>
 &lt;body>
-  &lt;p&gt;Hello world&lt;/p&gt;
+  &lt;svg version="1.1" xmlns="http://www.w3.org/2000/svg"&gt;
+    &lt;defs&gt;
+      <b>&lt;symbol id="icon-one" viewBox="0 0 80 32"&gt;
+        &lt;path class="path1" d="M0 10h32l-2 20h-28l-2-20zM29 6l1"&gt;&lt;/path&gt;
+      &lt;&#47;symbol&gt;</b>
+
+     <b>&lt;symbol id="icon-two" viewBox="0 0 80 32"&gt;
+       &lt;path class="path1" d="M26 30l6-16h-26l-6 16zM4 12l-4 18v-26h9l4"&gt;&lt;/path&gt;
+     &lt;&#47;symbol&gt;</b>
+   &lt;&#47;defs&gt;
+  &lt;&#47;svg&gt;
+&lt;h1&gt;Sprites, fool.&lt;&#47;h1&gt;
+
+  <b>&lt;svg&gt;
+    &lt;use xlink:href="#icon-one"&gt;&lt;&#47;use&gt;
+  &lt;&#47;svg&gt;</b>
+
 &lt;body>
 &lt;/html>
 </pre>
