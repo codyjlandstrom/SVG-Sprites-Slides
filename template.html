@@ -44,6 +44,81 @@ URL: https://code.google.com/p/io-2012-slides
 
   <slide>
     <hgroup>
+      <h2>What are SVG Sprites?</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>An SVG sprite is a single SVG file that contains data for multiple SVG graphics.</li>
+        <li>SVG sprites are convient because they:</li>
+        <ul class="build">
+         <li>Serve with one HTTP request</li>
+         <li>Allow you to style them with CSS</li>
+         <li>Are simple to add to your workflow</li>
+         <li>Are easy create fallbacks for</li>
+        </ul>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>What does an SVG Sprite look like?</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="xml">
+&lt;svg version="1.1" xmlns="http://www.w3.org/2000/svg"&gt;
+  &lt;defs&gt;
+
+    <b>&lt;symbol id="icon-one" viewBox="0 0 80 32"&gt;
+      &lt;path class="path1" d="M0 10h32l-2 20h-28l-2-20zM29 6l1"&gt;&lt;/path&gt;
+    &lt;&#47;symbol&gt;</b>
+
+    <b>&lt;symbol id="icon-two" viewBox="0 0 80 32"&gt;
+      &lt;path class="path1" d="M26 30l6-16h-26l-6 16zM4 12l-4 18v-26h9l4"&gt;&lt;/path&gt;
+    &lt;/symbol&gt;</b>
+
+  &lt;&#47;defs&gt;
+&lt;&#47;svg&gt;
+</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Code Slide (Smaller Font)</h2>
+    </hgroup>
+    <article class="smaller">
+      <pre class="prettyprint" data-lang="svg">
+// Say hello world until the user starts questioning
+// the meaningfulness of their existence.
+function helloWorld(world) {
+  for (var i = 42; --i &gt;= 0;) {
+    alert('Hello ' + String(world));
+  }
+}
+</pre>
+<pre class="prettyprint" data-lang="css">
+&lt;style&gt;
+  p { color: pink }
+  b { color: blue }
+&lt;/style&gt;
+</pre>
+<pre class="prettyprint" data-lang="html">
+&lt;!DOCTYPE html>
+&lt;html>
+&lt;head>
+  &lt;title>My Awesome Page&lt;/title>
+&lt;/head>
+&lt;body>
+  &lt;p&gt;Hello world&lt;/p&gt;
+&lt;body>
+&lt;/html>
+</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
       <h2>Slide with Bullets</h2>
     </hgroup>
     <article>
@@ -348,7 +423,7 @@ function helloWorld(world) {
   </slide>
 
   <slide class="segue dark quote nobackground">
-    <aside class="gdbar right bottom"><img src="images/google_developers_icon_128.png"></aside>
+    <aside class="gdbar right bottom"><img src="images/svg.svg"></aside>
     <article class="flexbox vleft auto-fadein">
       <q>
         This is an example of quote text.
@@ -365,7 +440,7 @@ function helloWorld(world) {
       <h2>Slide with Iframe</h2>
     </hgroup>
     <article>
-      <iframe data-src="http://www.google.com/doodle4google/resources/history.html"></iframe>
+      <p><img src="http://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Trajans-Column-lower-animated.svg/1200px-Trajans-Column-lower-animated.svg.png" alt="Trajans-Column-lower-animated.svg"></p>
     </article>
   </slide>
 
