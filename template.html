@@ -47,16 +47,12 @@ URL: https://code.google.com/p/io-2012-slides
       <h2>Problems With Image Sprites and Icon Fonts</h2>
     </hgroup>
     <article>
-      <ul>
-        <li>Both have sizing issues in certain browsers and edge cases</li>
+      <ul class="build">
+        <li><b>Both have sizing issues in certain browsers and edge cases</b></li>
         <br>
-        <li>SVG sprites are convient because they:</li>
-        <ul class="build">
-         <li>Serve with one HTTP request</li>
-         <li>Allow you to style them with CSS</li>
-         <li>Are simple to add to your workflow</li>
-         <li>Are easy create fallbacks for</li>
-        </ul>
+        <li><b>Both are troublesome to position correctly</b></li>
+        <br>
+        <li><b>Icon fonts anti-alias differently between browsers</b></li>
       </ul>
     </article>
   </slide>
@@ -72,8 +68,9 @@ URL: https://code.google.com/p/io-2012-slides
         <li>SVG sprites are convenient because they:</li>
         <ul class="build">
          <li>Serve with one HTTP request</li>
+         <li>Are simple to position</li>
          <li>Allow you to style them with CSS</li>
-         <li>Are simple to add to your workflow</li>
+         <li>Easily added to your workflow</li>
          <li>Are easy create fallbacks for</li>
         </ul>
       </ul>
@@ -191,7 +188,7 @@ function helloWorld(world) {
             <li>Fun fact: SVG used the RCC specification to first implement Shadow DOM and Shadow DOM functionality over a decade ago.</li>
           </ul>
         </li>
-        <li>Does not work in IE. ¯\_(ツ)_/¯</li>
+        <li>Requires fallback to work in IE. ¯\_(ツ)_/¯</li>
       </ul>
       <img src="images/shadowdom.png" alt="Shadow DOM" title="Shadow DOM" width="900">
     </article>
@@ -208,19 +205,38 @@ function helloWorld(world) {
 
   <slide>
     <hgroup>
-      <h2>Slide with Bullets</h2>
+      <h2>&lt;defs&gt; Tag</h2>
+      <h3>SVG Sprite Inception</h3>
     </hgroup>
     <article>
       <ul>
-        <li>&lt;use&gt; tag can also call external files</li>
-        <li>Title capitalization is title case
-          <ul>
-            <li>Subtitle capitalization is title case</li>
-          </ul>
-        </li>
-        <li>Subtitle capitalization is title case</li>
-        <li>Titles and subtitles should never have a period at the end</li>
+        <li>The &lt;defs&gt; tag can be used to <b>define</b> an element without rendering it</li>
+        <br>
+        <li>Can store anything (e.g. patterns, gradients, masks, etc...)</li>
+        <br>
+        <li>Great for creating minimal templates</li>
       </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>&lt;defs&gt; Tag</h2>
+      <h3>SVG Sprite Inception</h3>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="xml">
+&lt;svg&gt;
+  &lt;defs&gt;
+    &lt;linearGradient id="gradient"&gt;
+      &lt;stop offset="0%" style="stop-color: white"&gt;&lt;&#47;stop&gt;
+      &lt;stop offset="100%" style="stop-color: black"&gt;&lt;&#47;stop&gt;
+    &lt;&#47;linearGradient&gt;
+  &lt;&#47;defs&gt;
+
+  &lt;circle cx="50" r="40" stroke="black" stroke-width="1" <b>fill="url(#gradient)"</b> &#47;&gt;
+&lt;&#47;svg&gt;
+</pre>
     </article>
   </slide>
 
@@ -558,10 +574,10 @@ function helloWorld(world) {
   </slide>
 
   <slide class="thank-you-slide segue nobackground">
-    <aside class="gdbar right"><img src="images/google_developers_icon_128.png"></aside>
+    <aside class="gdbar right"><img src="images/nychtml5.svg"></aside>
     <article class="flexbox vleft auto-fadein">
       <h2>&lt;Thank You!&gt;</h2>
-      <p>Important contact information goes here.</p>
+      <p>Find me here:</p>
     </article>
     <p class="auto-fadein" data-config-contact>
       <!-- populated from slide_config.json -->
