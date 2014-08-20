@@ -1,0 +1,281 @@
+<!--
+Google IO 2012/2013 HTML5 Slide Template
+
+Authors: Eric Bidelman <ebidel@gmail.com>
+         Luke Mahé <lukem@google.com>
+
+URL: https://code.google.com/p/io-2012-slides
+-->
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">-->
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+  <!--This one seems to work all the time, but really small on ipad-->
+  <!--<meta name="viewport" content="initial-scale=0.4">-->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="stylesheet" media="all" href="theme/css/default.css">
+  <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="theme/css/phone.css">
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+  <script data-main="js/slides" src="js/require-1.0.8.min.js"></script>
+</head>
+<body style="opacity: 0">
+
+<slides class="layout-widescreen">
+
+  <slide class="logoslide nobackground">
+    <article class="flexbox vcenter">
+      <span><img src="images/nychtml5.svg"></span>
+    </article>
+  </slide>
+
+  <slide class="title-slide segue nobackground">
+    <aside class="gdbar"><img src="images/nychtml5.svg"></aside>
+    <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
+    <hgroup class="auto-fadein">
+      <h1 data-config-title><!-- populated from slide_config.json --></h1>
+      <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
+      <p data-config-presenter><!-- populated from slide_config.json --></p>
+    </hgroup>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Problems With Image Sprites and Icon Fonts</h2>
+    </hgroup>
+    <article>
+      <ul class="build">
+        <li><b>Both have sizing issues in certain browsers and edge cases</b></li>
+        <br>
+        <li><b>Both are troublesome to position correctly</b></li>
+        <br>
+        <li><b>Icon fonts anti-alias differently between browsers</b></li>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>What are SVG Sprites?</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>An SVG sprite is a single SVG file that contains data for multiple SVG graphics.</li>
+        <br>
+        <li>SVG sprites are convenient because they:</li>
+        <ul class="build">
+         <li>Serve with one HTTP request</li>
+         <li>Are simple to position</li>
+         <li>Allow you to style them with CSS</li>
+         <li>Easily added to your workflow</li>
+         <li>Are easy create fallbacks for</li>
+        </ul>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>What does an SVG Sprite look like?</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="xml">
+&lt;svg version="1.1" xmlns="http://www.w3.org/2000/svg"&gt;
+  &lt;defs&gt;
+
+    <b>&lt;symbol id="icon-one" viewBox="0 0 80 32"&gt;
+      &lt;path class="path1" d="M0 10h32l-2 20h-28l-2-20zM29 6l1"&gt;&lt;/path&gt;
+    &lt;&#47;symbol&gt;</b>
+
+    <b>&lt;symbol id="icon-two" viewBox="0 0 80 32"&gt;
+      &lt;path class="path1" d="M26 30l6-16h-26l-6 16zM4 12l-4 18v-26h9l4"&gt;&lt;/path&gt;
+    &lt;/symbol&gt;</b>
+
+  &lt;&#47;defs&gt;
+&lt;&#47;svg&gt;
+</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Creating an SVG Sprite</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>Copying and Pasting from individual SVG files</li>
+      </ul>
+      <br>
+      <ul>
+        <li>Using Grunt / Gulp Task</li>
+        <ul>
+         <li><a href="https://github.com/FWeinb/grunt-svgstore" target="_blank">grunt-svgstore</a></li>
+         <li><a href="https://github.com/filamentgroup/grunticon" target="_blank">grunticon</a> - for creating png fallbacks</li>
+        </ul>
+      </ul>
+      <br>
+      <ul>
+        <li>Using a Service</li>
+        <ul>
+          <li><a href="http://fontastic.me/" target="_blank">Fontastic</a></li>
+          <li><a href="https://icomoon.io" target="_blank">IcoMoon</a></li>
+          <li><a href="http://fontello.com/" target="_blank">Fontello</a></li>
+        </ul>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Using an SVG Sprite</h2>
+    </hgroup>
+    <article class="smaller">
+      <!-- <pre class="prettyprint" data-lang="svg">
+// Say hello world until the user starts questioning
+// the meaningfulness of their existence.
+function helloWorld(world) {
+  for (var i = 42; --i &gt;= 0;) {
+    alert('Hello ' + String(world));
+  }
+}
+</pre>
+<pre class="prettyprint" data-lang="css">
+&lt;style&gt;
+  p { color: pink }
+  b { color: blue }
+&lt;/style&gt;
+</pre> -->
+<pre class="prettyprint" data-lang="html">
+&lt;!DOCTYPE html>
+&lt;html>
+&lt;head>&lt;title>My Awesome Page&lt;/title>&lt;/head>
+&lt;body>
+  &lt;svg version="1.1" xmlns="http://www.w3.org/2000/svg" style="display:none;"&gt;
+    &lt;defs&gt;
+      <b>&lt;symbol id="icon-one" viewBox="0 0 80 32"&gt;
+        &lt;path class="path1" d="M0 10h32l-2 20h-28l-2-20zM29 6l1"&gt;&lt;/path&gt;
+      &lt;&#47;symbol&gt;</b>
+
+     <b>&lt;symbol id="icon-two" viewBox="0 0 80 32"&gt;
+       &lt;path class="path1" d="M26 30l6-16h-26l-6 16zM4 12l-4 18v-26h9l4"&gt;&lt;/path&gt;
+     &lt;&#47;symbol&gt;</b>
+   &lt;&#47;defs&gt;
+  &lt;&#47;svg&gt;
+&lt;h1&gt;Sprites, fool.&lt;&#47;h1&gt;
+
+  <b>&lt;svg&gt;
+    &lt;use xlink:href="#icon-one"&gt;&lt;&#47;use&gt;
+  &lt;&#47;svg&gt;</b>
+
+&lt;body>
+&lt;/html>
+</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>&lt;svg&gt;&lt;use&gt;</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>&lt;use&gt; tag calls width, height and viewbox settings from the symbol tag in sprite.</li>
+        <li>Elements that render inside of &lt;use&gt; tag are treated as Shadow DOM
+          <ul>
+            <li>Fun fact: SVG used the RCC specification to first implement Shadow DOM and Shadow DOM functionality over a decade ago.</li>
+          </ul>
+        </li>
+        <li>Requires fallback to work in IE. ¯\_(ツ)_/¯</li>
+      </ul>
+      <img src="images/shadowdom.png" alt="Shadow DOM" title="Shadow DOM" width="900">
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Demo</h2>
+    </hgroup>
+    <article>
+      <p><iframe src="http://jsbin.com/weqabe/2/edit?html,output"></iframe></p>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>&lt;defs&gt; Tag</h2>
+      <h3>SVG Sprite Inception</h3>
+    </hgroup>
+    <article>
+      <ul>
+        <li>The &lt;defs&gt; tag can be used to <b>define</b> an element without rendering it</li>
+        <br>
+        <li>Can store anything (e.g. patterns, gradients, masks, etc...)</li>
+        <br>
+        <li>Great for creating minimal templates</li>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>&lt;defs&gt; Tag</h2>
+      <h3>SVG Sprite Inception</h3>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="xml">
+&lt;svg&gt;
+  &lt;defs&gt;
+    &lt;linearGradient id="gradient"&gt;
+      &lt;stop offset="0%" style="stop-color: white"&gt;&lt;&#47;stop&gt;
+      &lt;stop offset="100%" style="stop-color: black"&gt;&lt;&#47;stop&gt;
+    &lt;&#47;linearGradient&gt;
+  &lt;&#47;defs&gt;
+
+  &lt;circle cx="50" r="40" stroke="black" stroke-width="1" <b>fill="url(#gradient)"</b> &#47;&gt;
+&lt;&#47;svg&gt;
+</pre>
+    </article>
+  </slide>
+
+  <slide class="thank-you-slide segue nobackground">
+    <aside class="gdbar right"><img src="images/nychtml5.svg"></aside>
+    <article class="flexbox vleft auto-fadein">
+      <h2>&lt;Thank You!&gt;</h2>
+      <p>Find me here:</p>
+    </article>
+    <p class="auto-fadein" data-config-contact>
+      <!-- populated from slide_config.json -->
+    </p>
+  </slide>
+
+  <slide class="logoslide dark nobackground">
+    <article class="flexbox vcenter">
+      <span><img src="images/google_developers_logo_white.png"></span>
+    </article>
+  </slide>
+
+  <slide class="backdrop"></slide>
+
+</slides>
+
+<script>
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-XXXXXXXX-1']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
+
+<!--[if IE]>
+  <script src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>
+  <script>CFInstall.check({mode: 'overlay'});</script>
+<![endif]-->
+</body>
+</html>
